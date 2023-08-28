@@ -6,17 +6,17 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:31:55 by museker           #+#    #+#             */
-/*   Updated: 2023/08/27 17:31:56 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 12:29:41 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	count;
+	int		i;
+	int		sign;
+	long	count;
 
 	i = 0;
 	sign = 1;

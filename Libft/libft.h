@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:33:19 by museker           #+#    #+#             */
-/*   Updated: 2023/08/27 17:33:20 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 12:21:11 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char				*ft_strnstr(const char *haystack,
 						const char *needle, size_t len);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
-int					ft_atoi(const char *str);
+long				ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);

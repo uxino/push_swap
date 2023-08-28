@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:47:03 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 01:08:04 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 14:40:51 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,12 @@ void	edit_b(t_list **stack_a, t_list **stack_b, int i);
 int		flag_control(t_list *stack_a);
 void	mucox18(t_list **stack_a, t_list **stack_b);
 void	closing(t_list **stack_a, t_list **stack_b);
+
+//push_swap
+int		bit_control(t_list *stack_a);
+void	ft_sorting(t_list **stack_a, t_list **stack_b);
+void	print_linked_list(t_list *lst);
+
+//utils
+void	arguman_process(char *argv[], int argc, t_list **stack_a, t_list **stack_b);
 #endif

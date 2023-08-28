@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 02:50:29 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 15:08:45 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,29 @@ void	print_linked_list(t_list *lst)
 		current = current->next;
 	}
 	printf("\n");
+}
+
+int	bit_control(t_list *stack_a)
+{
+	int		i;
+	t_list	*tmp;
+	int		j;
+
+	i = 0;
+	j = 0;
+	tmp = stack_a;
+	while (tmp)
+	{
+		i = 0;
+		while (i < sizeof(tmp->flag) * 8)
+		{
+			if ((tmp->flag >> i & 1) && (i >= j))
+				j = i;
+			i++;
+		}
+		tmp = tmp->next;
+	}
+	return (j + 1);
 }
 
 void	ft_error(int a)
@@ -53,25 +76,44 @@ int	main(int argc, char *argv[])
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*tmp;
+	char	**array;
 
 	stack_b = NULL;
 	stack_a = NULL;
-	if (argc > 2)
+	if (argc > 1)
 	{
-		tmp = ft_lstnew(ft_atoi(argv[1]));
-		stack_a = tmp;
-		i = 2;
-		while (i < argc)
-		{
-			tmp->next = ft_lstnew(ft_atoi(argv[i]));
-			if (!tmp->next)
-				return (1);
-			tmp = tmp->next;
-			i++;
-		}
+		arguman_process(argv, argc, &stack_a, &stack_b);
 		ft_sorting(&stack_a, &stack_b);
-		// system("leaks push_swap");
 	}
 	else
 		ft_error(31);
 }
+
+// int	main(int argc, char *argv[])
+// {
+// 	int		i;
+// 	t_list	*stack_a;
+// 	t_list	*stack_b;
+// 	t_list	*tmp;
+// 	char	**array;
+
+// 	stack_b = NULL;
+// 	stack_a = NULL;
+// 	if (argc > 2)
+// 	{
+// 		tmp = ft_lstnew(ft_atoi(argv[1]));
+// 		stack_a = tmp;
+// 		i = 1;
+// 		while (++i < argc)
+// 		{
+// 			array = ft_split(argv[i], ' ');
+// 			tmp->next = ft_lstnew(ft_atoi((argv[i])));
+// 			if (!tmp->next)
+// 				return (1);
+// 			tmp = tmp->next;
+// 		}
+// 		ft_sorting(&stack_a, &stack_b);
+// 	}
+// 	else
+// 		ft_error(31);
+// }

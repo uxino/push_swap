@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 20:40:51 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 02:50:22 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 12:29:18 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,17 @@ int	flag_control(t_list *stack_a)
 
 void	mucox18(t_list **stack_a, t_list **stack_b)
 {
-	int			i;
-	t_list		*tmp_a;
-	t_list		*tmp_b;
+	int		i;
+	t_list	*tmp_a;
+	t_list	*tmp_b;
+	int		j;
 
 	i = 0;
+	j = bit_control(*stack_a);
+	// printf("%d",j);
 	tmp_a = (*stack_a);
 	tmp_b = (*stack_b);
-	while (i < 7)
+	while (i < j)
 	{
 		edit_a(stack_a, stack_b, i);
 		i++;
