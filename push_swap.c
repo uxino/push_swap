@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/08/29 15:12:47 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/29 17:19:55 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,17 @@ void	ft_sorting(t_list **stack_a, t_list **stack_b, int argc)
 	flag(&lst_a, &sorted_lst);
 	arguman_same_control(lst_a);
 	if (argc == 6)
-		arguman_equal_to_five(&lst_a,stack_b);
+	{
+		arguman_equal_to_five(&lst_a, stack_b);
+		print_linked_list(lst_a);
+		exit(31);
+	}
 	if (argc == 4)
+	{
 		arguman_equal_to_three(&lst_a, stack_b);
+		print_linked_list(lst_a);
+		exit(31);
+	}
 	mucox18(&lst_a, stack_b);
 	closing(&lst_a, stack_b);
 	(*stack_a) = lst_a;

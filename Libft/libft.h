@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:33:19 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 12:21:11 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/29 19:19:31 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list
 {
 	int				content;
 	int				flag;
+	int				index;
 	struct s_list	*next;
 }	t_list;
 
