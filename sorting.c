@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:24:37 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 18:50:01 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/29 21:14:06 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,20 @@ void	flag(t_list **lst, t_list **lst2)
 	(*lst) = temp;
 }
 
-t_list	*ft_lstcpy(t_list *lst)
+t_list  *ft_lstcpy(t_list *lst)
 {
-	t_list	*result;
-	t_list	*result_current;
-
-	result = ft_lstnew(lst->content);
-	result_current = result;
-	lst = lst->next;
-	while (lst)
-	{
-		result_current->next = ft_lstnew(lst->content);
-		result_current = result_current->next;
-		lst = lst->next;
-	}
-	return (result);
+    t_list  *result;
+    t_list  *result_current;
+    result = ft_lstnew(lst->content);
+    result->flag = lst->flag;
+    result_current = result;
+    lst = lst->next;
+    while (lst)
+    {
+        result_current->next = ft_lstnew(lst->content);
+        result_current = result_current->next;
+        result_current->flag = lst->flag;
+        lst = lst->next;
+    }
+    return (result);
 }
