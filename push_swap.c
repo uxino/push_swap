@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 15:08:45 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/29 15:12:47 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_error(int a)
 	exit (1);
 }
 
-void	ft_sorting(t_list **stack_a, t_list **stack_b)
+void	ft_sorting(t_list **stack_a, t_list **stack_b, int argc)
 {
 	t_list	*lst_a;
 	t_list	*sorted_lst;
@@ -64,10 +64,14 @@ void	ft_sorting(t_list **stack_a, t_list **stack_b)
 	lst_a = ft_lstcpy((*stack_a));
 	sorted_lst = sort((*stack_a));
 	flag(&lst_a, &sorted_lst);
+	arguman_same_control(lst_a);
+	if (argc == 6)
+		arguman_equal_to_five(&lst_a,stack_b);
+	if (argc == 4)
+		arguman_equal_to_three(&lst_a, stack_b);
 	mucox18(&lst_a, stack_b);
 	closing(&lst_a, stack_b);
-	// print_linked_list(lst_a);
-	// print_linked_list(*stack_b);
+	(*stack_a) = lst_a;
 }
 
 int	main(int argc, char *argv[])
@@ -78,12 +82,14 @@ int	main(int argc, char *argv[])
 	t_list	*tmp;
 	char	**array;
 
-	stack_b = NULL;
 	stack_a = NULL;
+	stack_b = NULL;
 	if (argc > 1)
 	{
 		arguman_process(argv, argc, &stack_a, &stack_b);
-		ft_sorting(&stack_a, &stack_b);
+		if ((sort_check(stack_a)))
+			exit(1);
+		ft_sorting(&stack_a, &stack_b, argc);
 	}
 	else
 		ft_error(31);

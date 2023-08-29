@@ -6,23 +6,24 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:26:16 by museker           #+#    #+#             */
-/*   Updated: 2023/08/27 23:41:30 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 16:58:04 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void    rotate(t_list **list)
+void	rotate(t_list **list)
 {
-    t_list  *first;
-    t_list  *end;
-    if (ft_lstsize(*list) < 2)
-        return ;
-    first = *list;
-    end = ft_lstlast(*list);
-    *list = (*list)->next;
-    end->next = first;
-    first->next = NULL;
+	t_list	*first;
+	t_list	*end;
+
+	if (ft_lstsize(*list) < 2)
+		return ;
+	first = *list;
+	end = ft_lstlast(*list);
+	*list = (*list)->next;
+	end->next = first;
+	first->next = NULL;
 }
 
 void	ra(t_list **a_lst)

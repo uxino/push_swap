@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 20:40:51 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 12:29:18 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/28 16:58:22 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	mucox18(t_list **stack_a, t_list **stack_b)
 
 	i = 0;
 	j = bit_control(*stack_a);
-	// printf("%d",j);
 	tmp_a = (*stack_a);
 	tmp_b = (*stack_b);
 	while (i < j)
