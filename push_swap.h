@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:47:03 by museker           #+#    #+#             */
-/*   Updated: 2023/08/29 16:25:57 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/30 16:55:21 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_list	*find_and_extract_largest(t_list **lst);
 t_list	*sort(t_list *lst);
 void	flag(t_list **lst, t_list **lst2);
 t_list	*ft_lstcpy(t_list *lst);
+t_list	*ft_lst_new(int content, int flag);
 
 //max_arguman
 void	edit_a(t_list **stack_a, t_list **stack_b, int i);
@@ -68,5 +69,8 @@ int		sort_check(t_list *stack_a);
 void	arguman_equal_to_five(t_list **stack_a, t_list **stack_b);
 void	arguman_same_control(t_list *stack_a);
 void	arguman_equal_to_three(t_list **stack_a, t_list **stack_b);
+
+//utils2
+
 
 #endif

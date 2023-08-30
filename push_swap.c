@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/08/29 17:19:55 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/30 20:12:04 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_linked_list(t_list *lst)
 	current = lst;
 	while (current)
 	{
-		printf("content:(%d), flag:(%d)\n", current->content, current->flag);
+		printf("content:(%d)\n", current->content);
 		current = current->next;
 	}
 	printf("\n");
@@ -65,21 +65,23 @@ void	ft_sorting(t_list **stack_a, t_list **stack_b, int argc)
 	sorted_lst = sort((*stack_a));
 	flag(&lst_a, &sorted_lst);
 	arguman_same_control(lst_a);
+
 	if (argc == 6)
 	{
 		arguman_equal_to_five(&lst_a, stack_b);
-		print_linked_list(lst_a);
-		exit(31);
+		//print_linked_list(lst_a);
+		exit(1);
 	}
 	if (argc == 4)
 	{
 		arguman_equal_to_three(&lst_a, stack_b);
-		print_linked_list(lst_a);
-		exit(31);
+		//print_linked_list(lst_a);
+		exit(1);
 	}
 	mucox18(&lst_a, stack_b);
 	closing(&lst_a, stack_b);
 	(*stack_a) = lst_a;
+	//print_linked_list((*stack_a));
 }
 
 int	main(int argc, char *argv[])
@@ -96,8 +98,9 @@ int	main(int argc, char *argv[])
 	{
 		arguman_process(argv, argc, &stack_a, &stack_b);
 		if ((sort_check(stack_a)))
-			exit(1);
+			exit(0);
 		ft_sorting(&stack_a, &stack_b, argc);
+		return (0);
 	}
 	else
 		ft_error(31);

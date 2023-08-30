@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:33:19 by museker           #+#    #+#             */
-/*   Updated: 2023/08/29 19:19:31 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/30 18:01:28 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void				ft_lstclear(t_list **lst, void (*del)(int));
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(int));
-
+void				ft_error(int a);
+void				ft_atoi_check(const char *s);
 #endif

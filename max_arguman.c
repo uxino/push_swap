@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 20:40:51 by museker           #+#    #+#             */
-/*   Updated: 2023/08/28 16:58:22 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/30 16:02:44 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ void	edit_a(t_list **stack_a, t_list **stack_b, int i)
 {
 	t_list	*tmp;
 
-	tmp = ft_lstcpy(*stack_a);
+	tmp = ft_lstcpy((*stack_a));
 	while (tmp)
 	{
 		if ((*stack_a)->flag >> i & 1)
 			ra(stack_a);
 		else
 			pb(stack_a, stack_b);
+		free(tmp);
 		tmp = tmp->next;
 	}
 }
@@ -75,6 +76,7 @@ void	edit_b(t_list **stack_a, t_list **stack_b, int i)
 			pa(stack_a, stack_b);
 		else
 			rb(stack_b);
+		free(tmp);
 		tmp = tmp->next;
 	}
 }
@@ -87,6 +89,7 @@ void	closing(t_list **stack_a, t_list **stack_b)
 	while (tmp)
 	{
 		pa(stack_a, stack_b);
+		free(tmp);
 		tmp = tmp->next;
 	}
 }

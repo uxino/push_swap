@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:24:37 by museker           #+#    #+#             */
-/*   Updated: 2023/08/29 21:14:06 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/30 15:54:47 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,25 +75,37 @@ void	flag(t_list **lst, t_list **lst2)
 			(*lst) = (*lst)->next;
 		}
 		(*lst) = temp;
+		free(*lst2);
 		(*lst2) = (*lst2)->next;
 	}
 	(*lst) = temp;
 }
 
-t_list  *ft_lstcpy(t_list *lst)
+t_list	*ft_lst_new(int content, int flag)
 {
-    t_list  *result;
-    t_list  *result_current;
-    result = ft_lstnew(lst->content);
-    result->flag = lst->flag;
-    result_current = result;
-    lst = lst->next;
-    while (lst)
-    {
-        result_current->next = ft_lstnew(lst->content);
-        result_current = result_current->next;
-        result_current->flag = lst->flag;
-        lst = lst->next;
-    }
-    return (result);
+	t_list	*p;
+
+	p = malloc(sizeof(t_list));
+	if (!p)
+		return (NULL);
+	p->content = content;
+	p->flag = flag;
+	p->next = NULL;
+	return (p);
+}
+
+t_list	*ft_lstcpy(t_list *lst)
+{
+	t_list	*result;
+	t_list	*result_current;
+
+	result = ft_lst_new(lst->content, lst->flag);
+	result_current = result;
+	lst = lst->next;
+	while (lst)
+	{
+		ft_lstadd_back(&result_current, ft_lst_new(lst->content, lst->flag));
+		lst = lst->next;
+	}
+	return (result);
 }
