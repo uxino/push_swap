@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:34:26 by museker           #+#    #+#             */
-/*   Updated: 2023/08/27 17:34:27 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/30 20:42:43 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	count_word(const char *p, char c)
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int *a)
 {
 	char	**list;
 	size_t	i;
@@ -56,6 +56,7 @@ char	**ft_split(char const *s, char c)
 			break ;
 		list[h_y++] = ft_substr(s, i, tmp - i);
 		i = tmp;
+		(*a)++;
 	}
 	list[h_y] = 0;
 	return (list);

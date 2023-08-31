@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/08/30 20:12:04 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/31 20:07:33 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	bit_control(t_list *stack_a)
 void	ft_error(int a)
 {
 	a = 5;
-	write (1, "Error!!", 7);
+	write (2, "Error\n", 6);
 	exit (1);
 }
 
@@ -64,73 +64,40 @@ void	ft_sorting(t_list **stack_a, t_list **stack_b, int argc)
 	lst_a = ft_lstcpy((*stack_a));
 	sorted_lst = sort((*stack_a));
 	flag(&lst_a, &sorted_lst);
-	arguman_same_control(lst_a);
-
-	if (argc == 6)
-	{
-		arguman_equal_to_five(&lst_a, stack_b);
-		//print_linked_list(lst_a);
-		exit(1);
-	}
-	if (argc == 4)
+	if (argc <= 3)
 	{
 		arguman_equal_to_three(&lst_a, stack_b);
-		//print_linked_list(lst_a);
-		exit(1);
+		exit(0);
+	}
+	else if (argc <= 5)
+	{
+		arguman_equal_to_five(&lst_a, stack_b);
+		exit(0);
 	}
 	mucox18(&lst_a, stack_b);
 	closing(&lst_a, stack_b);
 	(*stack_a) = lst_a;
-	//print_linked_list((*stack_a));
 }
 
 int	main(int argc, char *argv[])
 {
-	int		i;
+	int		a;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*tmp;
-	char	**array;
 
+	a = count_word_argv(argv, ' ');
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc > 1)
 	{
 		arguman_process(argv, argc, &stack_a, &stack_b);
+		arguman_same_control(stack_a);
 		if ((sort_check(stack_a)))
 			exit(0);
-		ft_sorting(&stack_a, &stack_b, argc);
+		ft_sorting(&stack_a, &stack_b, a);
+		system("leaks push_swap");
 		return (0);
 	}
 	else
-		ft_error(31);
+		return (0);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	int		i;
-// 	t_list	*stack_a;
-// 	t_list	*stack_b;
-// 	t_list	*tmp;
-// 	char	**array;
-
-// 	stack_b = NULL;
-// 	stack_a = NULL;
-// 	if (argc > 2)
-// 	{
-// 		tmp = ft_lstnew(ft_atoi(argv[1]));
-// 		stack_a = tmp;
-// 		i = 1;
-// 		while (++i < argc)
-// 		{
-// 			array = ft_split(argv[i], ' ');
-// 			tmp->next = ft_lstnew(ft_atoi((argv[i])));
-// 			if (!tmp->next)
-// 				return (1);
-// 			tmp = tmp->next;
-// 		}
-// 		ft_sorting(&stack_a, &stack_b);
-// 	}
-// 	else
-// 		ft_error(31);
-// }

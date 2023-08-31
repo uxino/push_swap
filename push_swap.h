@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:47:03 by museker           #+#    #+#             */
-/*   Updated: 2023/08/30 16:55:21 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/31 16:03:35 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,20 @@ void	closing(t_list **stack_a, t_list **stack_b);
 
 //push_swap
 int		bit_control(t_list *stack_a);
-void	ft_sorting(t_list **stack_a, t_list **stack_b, int argc);
+void	ft_sorting(t_list **stack_a, t_list **stack_b, int a);
 void	print_linked_list(t_list *lst);
 void	ft_error(int a);
 
 //utils
-void	arguman_process(char *argv[], int argc, 
+int		arguman_process(char *argv[], int argc, 
 			t_list **stack_a, t_list **stack_b);
 int		sort_check(t_list *stack_a);
 void	arguman_equal_to_five(t_list **stack_a, t_list **stack_b);
 void	arguman_same_control(t_list *stack_a);
 void	arguman_equal_to_three(t_list **stack_a, t_list **stack_b);
+void	three_argument(t_list **stack_a);
 
 //utils2
-
+int		count_word_argv(char *p[], char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:15:07 by museker           #+#    #+#             */
-/*   Updated: 2023/08/30 20:00:00 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/31 20:07:18 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ int	sort_check(t_list *stack_a)
 	return (0);
 }
 
-#include <stdio.h>
-void	arguman_process(char *argv[], int argc, 
-	t_list **stack_a, t_list **stack_b)
+int	arguman_process(char *argv[], int argc, t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
 	int		i;
 	char	**s;
 	int		j;
+	int		count;
 
+	count = 0;
 	tmp = ft_lstnew(0);
 	(*stack_a) = tmp;
 	j = -1;
@@ -46,13 +46,10 @@ void	arguman_process(char *argv[], int argc,
 	ft_lstadd_back(&tmp, ft_lstnew(10));
 	while (++i < argc)
 	{
-		s = ft_split(argv[i], ' ');
+		s = ft_split(argv[i], ' ', &count);
 		while (s[++j])
 		{
 			ft_lstadd_back(&tmp, ft_lstnew(ft_atoi(s[j])));
-			if (!tmp->next)
-				return ;
-			tmp = tmp->next;
 			free(s[j]);
 		}
 		free(s);
@@ -64,65 +61,84 @@ void	arguman_process(char *argv[], int argc,
 	free((*stack_a));
 	if ((*stack_a)->next)
 		(*stack_a) = (*stack_a)->next;
+	return (count);
 }
 
 void	arguman_same_control(t_list *stack_a)
 {
 	t_list	*tmp;
-	t_list	*tmp2;
-	int		content;
-	int		count;
 
-	count = 0;
-	tmp = stack_a;
-	tmp2 = stack_a;
-	while (tmp)
+	while (stack_a)
 	{
-		content = tmp->content;
-		while (tmp2)
+		tmp = stack_a->next;
+		while (tmp)
 		{
-			if (content == tmp2->content)
-				count++;
-			tmp2 = tmp2->next;
+			if (tmp->content == stack_a->content)
+				ft_error(31);
+			tmp = tmp->next;
 		}
-		if (count > 1)
-			ft_error(31);
-		count = 0;
-		tmp = tmp->next;
-		tmp2 = stack_a;
+		stack_a = stack_a->next;
 	}
 }
 
 void	arguman_equal_to_three(t_list **stack_a, t_list **stack_b)
 {
-	if ((*stack_a)->flag == 1 || 
-		((*stack_a)->flag == 3 && (*stack_a)->next->flag > 3))
+	t_list	*iter;
+
+	iter = *stack_a;
+	if (iter->flag == 2)
 	{
-		if ((*stack_a)->next->flag == 3 || (*stack_a)->next->flag == 5)
-		{
+		if (iter->next->flag == 1)
+			sa(stack_a);
+		else if (iter->next->flag == 3)
 			rra(stack_a);
+	}
+	else if (iter->flag == 1 && iter->next->flag == 3)
+	{
+		rra(stack_a);
+		sa(stack_a);
+	}
+	else if (iter->flag == 3)
+	{
+		if (iter->next->flag == 1)
+			ra(stack_a);
+		else if (iter->next->flag == 2)
+		{
+			ra(stack_a);
 			sa(stack_a);
 		}
 	}
-	else if ((*stack_a)->flag == 2 
-		|| ((*stack_a)->next->flag == 4 
-			&& ((*stack_a)->next->flag > 3) 
-			|| (*stack_a)->next->next->flag > 3))
+}
+void	three_argument(t_list **stack_a)
+{
+	t_list	*iter;
+
+	iter = *stack_a;
+	if (iter->flag == 4)
 	{
-		if ((*stack_a)->next->flag == 3 || (*stack_a)->next->flag == 5)
+		if (iter->next->flag == 3)
+			sa(stack_a);
+		else if (iter->next->flag == 5)
 			rra(stack_a);
-		else
-			sa(stack_a);
 	}
-	else
+	else if (iter->flag == 3 && iter->next->flag == 5)
 	{
-		ra(stack_a);
-		if ((*stack_a)->next->flag == 1 || (*stack_a)->next->flag == 3)
+		rra(stack_a);
+		sa(stack_a);
+	}
+	else if (iter->flag == 5)
+	{
+		if (iter->next->flag == 3)
+			ra(stack_a);
+		else if (iter->next->flag == 4)
+		{
+			ra(stack_a);
 			sa(stack_a);
+		}
 	}
 }
 
-void    arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
+void	arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*tmp;
 	int		i;
@@ -134,7 +150,6 @@ void    arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
 	e = -1;
 	index = 0;
 	count = 1;
-	tmp = ft_lstcpy(*stack_a);
 	while (++i < 2)
 	{
 		tmp = (*stack_a);
@@ -154,42 +169,8 @@ void    arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
 			tmp = tmp->next;
 		}
 	}
-	arguman_equal_to_three(stack_a, stack_b);
+	three_argument(stack_a);
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
-}
-
-
-
-// void	arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
-// {
-// 	t_list	*tmp;
-// 	int		i;
-// 	int		count;
-// 	int		index;
-// 	int		e;
-
-// 	i = -1;
-// 	e = -1;
-// 	index = 1;
-// 	tmp = (*stack_a);
-// 	count = 1;
-// 	while (++i < 2)
-// 	{
-// 		while ((*stack_a))
-// 		{
-// 			(*stack_a)->index = index;
 			
-// 			if ((*stack_a)->flag == count)
-// 			{
-// 				pb(stack_a, stack_b);
-// 				count++;
-// 			}
-// 			(*stack_a) = (*stack_a)->next;
-// 		}
-// 		(*stack_a) = tmp->next;
-// 	}
-// 	arguman_equal_to_three(stack_a, stack_b);
-// 	pa(stack_a, stack_b);
-// 	pa(stack_a, stack_b);
-// }
+}

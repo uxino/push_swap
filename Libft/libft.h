@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:33:19 by museker           #+#    #+#             */
-/*   Updated: 2023/08/30 18:01:28 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/31 17:23:19 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char				*ft_strdup(const char *s1);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
-char				**ft_split(char const *s, char c);
+char				**ft_split(char const *s, char c, int *a);
 char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -72,4 +72,6 @@ int					ft_lstsize(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(int));
 void				ft_error(int a);
 void				ft_atoi_check(const char *s);
+size_t				count_word(const char *p, char c);
+void				ft_check_it(long a);
 #endif
