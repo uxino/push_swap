@@ -11,18 +11,18 @@ NAME = push_swap
 all : $(LFLAGS) $(NAME)
  
 $(LFLAGS):
-	@make -C ./libft
-	@make bonus -C ./libft
+	@make -C ./Libft
+	@make bonus -C ./Libft
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LFLAGS) $(AFLAGS) -o $(NAME)
 
 fclean : clean
-	@make fclean -C ./libft
+	@make fclean -C ./Libft
 	@$(RM) $(NAME)
 
 clean :
-	@make clean -C ./libft
+	@make clean -C ./Libft
 	@$(RM) $(OBJS)
 
 re : fclean all

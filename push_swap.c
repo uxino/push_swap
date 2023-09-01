@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/08/31 20:07:33 by museker          ###   ########.fr       */
+/*   Updated: 2023/09/01 10:20:16 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_error(int a)
 {
 	a = 5;
 	write (2, "Error\n", 6);
-	exit (1);
+	exit (0);
 }
 
 void	ft_sorting(t_list **stack_a, t_list **stack_b, int argc)
@@ -95,7 +95,7 @@ int	main(int argc, char *argv[])
 		if ((sort_check(stack_a)))
 			exit(0);
 		ft_sorting(&stack_a, &stack_b, a);
-		system("leaks push_swap");
+
 		return (0);
 	}
 	else

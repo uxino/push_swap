@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:47:03 by museker           #+#    #+#             */
-/*   Updated: 2023/08/31 16:03:35 by museker          ###   ########.fr       */
+/*   Updated: 2023/09/01 10:14:30 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,9 @@ void	three_argument(t_list **stack_a);
 
 //utils2
 int		count_word_argv(char *p[], char c);
-
+void	arguman_equal_to_five_2(t_list **stack_a, 
+			t_list **stack_b, int i, int e);
+int		arguman_process_2(char *argv[], int argc, 
+			t_list **stack_a, t_list **stack_b);
+void	split_control(char *s);
 #endif

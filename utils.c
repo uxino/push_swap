@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:15:07 by museker           #+#    #+#             */
-/*   Updated: 2023/08/31 20:07:18 by museker          ###   ########.fr       */
+/*   Updated: 2023/08/31 23:09:23 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,12 @@ int	sort_check(t_list *stack_a)
 	return (0);
 }
 
-int	arguman_process(char *argv[], int argc, t_list **stack_a, t_list **stack_b)
+int	arguman_process(char *argv[], int argc, 
+	t_list **stack_a, t_list **stack_b)
 {
-	t_list	*tmp;
-	int		i;
-	char	**s;
-	int		j;
-	int		count;
+	int	count;
 
-	count = 0;
-	tmp = ft_lstnew(0);
-	(*stack_a) = tmp;
-	j = -1;
-	i = 0;
-	ft_lstadd_back(&tmp, ft_lstnew(10));
-	while (++i < argc)
-	{
-		s = ft_split(argv[i], ' ', &count);
-		while (s[++j])
-		{
-			ft_lstadd_back(&tmp, ft_lstnew(ft_atoi(s[j])));
-			free(s[j]);
-		}
-		free(s);
-		j = -1;
-	}
+	count = arguman_process_2(argv, argc, stack_a, stack_b);
 	free((*stack_a));
 	if ((*stack_a)->next)
 		(*stack_a) = (*stack_a)->next;
@@ -109,6 +90,7 @@ void	arguman_equal_to_three(t_list **stack_a, t_list **stack_b)
 		}
 	}
 }
+
 void	three_argument(t_list **stack_a)
 {
 	t_list	*iter;
@@ -136,41 +118,4 @@ void	three_argument(t_list **stack_a)
 			sa(stack_a);
 		}
 	}
-}
-
-void	arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*tmp;
-	int		i;
-	int		count;
-	int		index;
-	int		e;
-
-	i = -1;
-	e = -1;
-	index = 0;
-	count = 1;
-	while (++i < 2)
-	{
-		tmp = (*stack_a);
-		index = 0;
-		while (tmp)
-		{
-			tmp->index = index;
-			if (tmp->flag == count)
-			{
-				while (++e < tmp->index)
-					ra(stack_a);
-				e = -1;
-				pb(stack_a, stack_b);
-				count++;
-			}
-			index++;
-			tmp = tmp->next;
-		}
-	}
-	three_argument(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
-			
 }
