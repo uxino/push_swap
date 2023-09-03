@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:04:48 by museker           #+#    #+#             */
-/*   Updated: 2023/09/01 10:21:11 by museker          ###   ########.fr       */
+/*   Updated: 2023/09/01 11:48:11 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	arguman_equal_to_five(t_list **stack_a, t_list **stack_b)
 	e = -1;
 	index = 0;
 	count = 1;
+	arguman_max_score_control(stack_a, stack_b);
 	arguman_equal_to_five_2(stack_a, stack_b, i, e);
 	three_argument(stack_a);
 	pa(stack_a, stack_b);

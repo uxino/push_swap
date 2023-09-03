@@ -6,7 +6,7 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:47:03 by museker           #+#    #+#             */
-/*   Updated: 2023/09/01 10:14:30 by museker          ###   ########.fr       */
+/*   Updated: 2023/09/01 11:48:35 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "Libft/libft.h"
-# include <stdio.h>
 
 //rules
 void	swap(t_list **data);
@@ -59,7 +58,6 @@ void	closing(t_list **stack_a, t_list **stack_b);
 //push_swap
 int		bit_control(t_list *stack_a);
 void	ft_sorting(t_list **stack_a, t_list **stack_b, int a);
-void	print_linked_list(t_list *lst);
 void	ft_error(int a);
 
 //utils
@@ -78,4 +76,7 @@ void	arguman_equal_to_five_2(t_list **stack_a,
 int		arguman_process_2(char *argv[], int argc, 
 			t_list **stack_a, t_list **stack_b);
 void	split_control(char *s);
+
+//utils3
+void	arguman_max_score_control(t_list **stack_a, t_list **stack_b);
 #endif

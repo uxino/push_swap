@@ -6,25 +6,11 @@
 /*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:14 by museker           #+#    #+#             */
-/*   Updated: 2023/09/01 10:20:16 by museker          ###   ########.fr       */
+/*   Updated: 2023/09/01 11:49:24 by museker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_linked_list(t_list *lst)
-{
-	t_list	*current;
-
-	printf("------------- STACK A -------------\n");
-	current = lst;
-	while (current)
-	{
-		printf("content:(%d)\n", current->content);
-		current = current->next;
-	}
-	printf("\n");
-}
 
 int	bit_control(t_list *stack_a)
 {
@@ -95,7 +81,6 @@ int	main(int argc, char *argv[])
 		if ((sort_check(stack_a)))
 			exit(0);
 		ft_sorting(&stack_a, &stack_b, a);
-
 		return (0);
 	}
 	else
